@@ -1,0 +1,10 @@
+{
+  "author": "Peatix Inc.",
+  "name": "Absynthe",
+  "description": "Synchronized event scheduler in real-time",
+  "version": "0.0.1",
+  "devDependencies": {
+    "mocha": "^2.2.1",
+    "should": "^5.2.0"
+  }
+}
