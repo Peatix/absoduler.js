@@ -1,0 +1,15 @@
+<script src="/Absoduler.js"></script>
+<script>
+  var abdl = new Absoduler({ server: 'ws://10.0.1.15:8088/' });
+  abdl.on('color', function (msg) {
+
+    var elem = document.getElementById('body');
+    var c = msg.color;
+    var css = 'rgb(' + c.join(',') + ')';
+    elem.style.backgroundColor = css;
+  });
+</script>
+<body id="body">
+hello
+
+</body>

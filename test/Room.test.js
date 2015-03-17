@@ -58,16 +58,32 @@ describe('Room', function () {
     it('pk is id by default, and throw exception if not given', function () {
       var room = new Room();
       var boss = { name: "Taku", id: 1 };
-      var nonEmployee = { name: "lestrrat" };
+      var nonEmployee = { name: "Daisuke" };
       (function () { room.join(boss) }).should.not.throw();
       (function () { room.join(nonEmployee) }).should.throw();
     });
     it('can change primary key', function () {
       var room = new Room({pk: '_id'});
       var boss = { name: "Taku", _id: 1 };
-      var nonEmployee = { name: "lestrrat", id: 5 };
+      var nonEmployee = { name: "Daisuke", id: 5 };
       (function () { room.join(boss) }).should.not.throw();
       (function () { room.join(nonEmployee) }).should.throw();
+    });
+  });
+  describe('#each', function () {
+    var room = new Room();
+    var boss = { name: "Taku", id: 1 };
+    var emproyee = { name: "Fumiaki", id: 2 };
+    room.join(boss);
+    room.join(emproyee);
+    var checked = {1:0,2:0};
+    it('should run fn for each member', function () {
+      room.each( function () {
+          this.should.have.ownProperty('id');
+          this.should.have.ownProperty('name');
+          checked[this.id] = 1;
+      });
+      checked.should.eql({1:1,2:1});
     });
   });
 });
