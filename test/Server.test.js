@@ -1,15 +1,15 @@
-var AbsodulerServer = require('../lib/AbsodulerServer')
+var Server = require('../lib/Server')
   , Absoduler = require('../lib/Absoduler')
   , plan = require('./testutil').plan
   ;
-AbsodulerServer.Serialize = Absoduler.Serialize = require('../lib/Serialize');
+Server.Serialize = Absoduler.Serialize = require('../lib/Serialize');
 require('should');
 
-describe('AbsodulerServer', function () {
+describe('Absoduler.Server', function () {
   plan(1).it('run without exception', function (done) {
     var server;
     (function() {
-      server = new AbsodulerServer({port:8087})
+      server = new Server({port:8087})
     }).should.not.throw();
     setTimeout(function () {
       server.close();
@@ -23,7 +23,7 @@ describe('AbsodulerServer', function () {
       this.timeout(8000); // Wait synchronize
       var server;
       (function() {
-        server = new AbsodulerServer({port:8087})
+        server = new Server({port:8087})
       }).should.not.throw();
       setTimeout(function () {
         server.broadcast({ type: 'foo', after: 1500 });
