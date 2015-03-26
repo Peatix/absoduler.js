@@ -2,6 +2,7 @@ var AbsodulerServer = require('../lib/AbsodulerServer')
   , Absoduler = require('../lib/Absoduler')
   , plan = require('./testutil').plan
   ;
+AbsodulerServer.Serialize = Absoduler.Serialize = require('../lib/Serialize');
 require('should');
 
 describe('AbsodulerServer', function () {

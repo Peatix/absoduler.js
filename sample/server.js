@@ -19,7 +19,7 @@ var httpserver = http.createServer(function(request, response) {
   }
   response.end();
 });
-httpserver.listen(8089);
+httpserver.listen(8080);
 
 var as = new AbsodulerServer({port: 8088});
 
