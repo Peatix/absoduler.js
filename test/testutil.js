@@ -5,6 +5,7 @@
       it: function(title,fn) {
         if ( fn && fn.length ) {
           var wrappedFunc = function (done) {
+            var funcCtx = this;
             var wrappedDone = function (err) {
               times--;
               if (err){
@@ -17,7 +18,7 @@
                 done();
               }
             };
-            return fn(wrappedDone);
+            return fn.call(funcCtx, wrappedDone);
           };
           // call mocha's it... there should be.
           return it.call(this,title,wrappedFunc);
@@ -31,4 +32,5 @@
   module.exports = {
     plan: plan
   };
+
 })();
