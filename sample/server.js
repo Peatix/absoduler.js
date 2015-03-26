@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-var http = require('http')
-  , AbsodulerServer = require('../index').Server
+var http = require('http'),
+  AbsodulerServer = require('../index').Server,
+  fs = require('fs');
 
-  , fs = require('fs')
-  ;
 
 var files = {};
 function registerFile (url,file) {
