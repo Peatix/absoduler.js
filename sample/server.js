@@ -35,9 +35,11 @@ httpserver.listen(8080);
 var as = new AbsodulerServer({port: 8088});
 
 setInterval( function () {
-  as.broadcast({ type: 'color', after: 1000, color: [
-    parseInt(Math.random() * 256),
-    parseInt(Math.random() * 256),
-    parseInt(Math.random() * 256)
-  ]});
+  as.wss.clients.forEach( function (ws) {
+    ws.sendEvent('color', 1000, [
+      parseInt(Math.random() * 256),
+      parseInt(Math.random() * 256),
+      parseInt(Math.random() * 256)
+    ]);
+  });
 }, 1000);

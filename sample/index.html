@@ -2,10 +2,9 @@
 <script src="/Serialize.js"></script>
 <script>
   var abdl = new Absoduler({ server: 'ws://localhost:8088/' });
-  abdl.on('color', function (msg) {
+  abdl.on('color', function (rgb) {
     var elem = document.getElementById('body');
-    var c = msg.color;
-    var css = 'rgb(' + c.join(',') + ')';
+    var css = 'rgb(' + rgb.join(',') + ')';
     elem.style.backgroundColor = css;
   });
 </script>

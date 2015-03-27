@@ -2,7 +2,7 @@
   "author": "Peatix Inc.",
   "name": "absoduler",
   "description": "Absolute scheduler - event scheduler in real-time, with multiple devices",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": "git@github.com:Peatix/Absoduler.js.git",
   "devDependencies": {
     "grunt": "^0.4.5",
