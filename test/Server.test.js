@@ -23,12 +23,15 @@ describe('Absoduler.Server', function () {
     context.prototype.plan = function (t){console.log(t)};
     plan(3).it('can connect', function (done) {
       this.timeout(8000); // Wait synchronize
-      var server;
+      var server,socket;
       (function() {
         server = new Server({port:8087})
       }).should.not.throw();
+      server.on('connection', function (ws) {
+        socket = ws;
+      });
       setTimeout(function () {
-        server.broadcast({ t: 'foo', after: 1500 });
+        socket.sendEvent('foo', 1500);
         setTimeout( function () { server.close() }, 2000 );
         done();
       }, 2000);
@@ -79,5 +82,4 @@ describe('Absoduler.Server', function () {
       }, 1000);
     });
   });
-
 });
