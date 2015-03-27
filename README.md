@@ -15,16 +15,19 @@ abdl.on('blah', function () {
 var AbsodulerServer = require('Absoduler').Server;
 var abdls = new AbsodulerServer({ port: 9801 });
 
-// send an event, then it fires on every clients at same time
-abdls.broadcast({
-  type: blah,
-  after: 1000
+abdls.on('connected', function (ws) {
+  ws.sendEvent('blah', 1000, {'additional': 'informations'});
 });
 ```
 
 ## Description
 
-Absoduler is a thin websocket wrapper which provides a way to fire events in any clients, scheduled in absolute time ( not on their machin time, but synchronized in real-time).
+Absoduler is a thin websocket wrapper which provides a way to fire events in any clients, scheduled in absolute time ( not on their machine time, but synchronized in real-time).
+
+### WebSocket Transparency
+
+Absoduler is designed to keep transpaarency for WebSocket, so It's easy to implement synced event into existing applications.
+
 
 ## Disclaimer
 

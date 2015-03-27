@@ -1,9 +1,19 @@
 {
-  "author": "Peatix Inc.",
+  "author": {
+    "name": "Peatix Inc.",
+    "url": "http://peatix.com"
+  },
   "name": "absoduler",
   "description": "Absolute scheduler - event scheduler in real-time, with multiple devices",
   "version": "0.0.2",
-  "repository": "git@github.com:Peatix/Absoduler.js.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Peatix/absoduler.js.git"
+  },
+  "bugs": {
+    "url": "http://github.com/Peatix/absoduler.js/issues"
+  },
+  "main": "index.js",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",
