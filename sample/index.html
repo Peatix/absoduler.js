@@ -1,7 +1,7 @@
 <script src="/Absoduler.js"></script>
 <script src="/Serialize.js"></script>
 <script>
-  var abdl = new Absoduler({ server: 'ws://localhost:8088/' });
+  var abdl = new Absoduler({ server: 'ws://__HOST__:8088/' });
   abdl.on('color', function (rgb) {
     var elem = document.getElementById('body');
     var css = 'rgb(' + rgb.join(',') + ')';

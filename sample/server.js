@@ -5,9 +5,14 @@ var http = require('http'),
 
 
 var files = {};
+var host = process.argv[2];
+if ( !host ) host = 'localhost';
+console.log( 'running server', host );
 function registerFile (url,file) {
-  files[url] = fs.readFileSync(__dirname + '/' + file, {encoding: 'utf8'});
+  var content = fs.readFileSync(__dirname + '/' + file, {encoding: 'utf8'});
+  files[url] = content.replace('__HOST__', host);
 }
+
 
 registerFile(  '/index.html', 'index.html' );
 registerFile( '/Absoduler.js', '/../lib/Absoduler.js');
@@ -35,11 +40,12 @@ httpserver.listen(8080);
 var as = new AbsodulerServer({port: 8088});
 
 setInterval( function () {
-  as.wss.clients.forEach( function (ws) {
-    ws.sendEvent('color', 1000, [
+  var rgb = [
       parseInt(Math.random() * 256),
       parseInt(Math.random() * 256),
       parseInt(Math.random() * 256)
-    ]);
+  ];
+  as.wss.clients.forEach( function (ws) {
+    ws.sendEvent('color', 1000, rgb);
   });
 }, 1000);
