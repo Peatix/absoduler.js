@@ -26,7 +26,7 @@ describe('Absoduler.Server', function () {
         server = new Server({port:8087})
       }).should.not.throw();
       setTimeout(function () {
-        server.broadcast({ type: 'foo', after: 1500 });
+        server.broadcast({ t: 'foo', after: 1500 });
         setTimeout( function () { server.close() }, 2000 );
         done();
       }, 2000);

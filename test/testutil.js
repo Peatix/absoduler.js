@@ -1,4 +1,10 @@
 ( function () {
+  var assert = require('assert');
+
+  // Add done() counter to mocha.
+  // Note: this works well for less invokes, but fails to check over calling
+  // at end of test suites. If you need to make sure done calles exact times,
+  // set some timer to wait for that.
   var plan = function (times) {
     var that = this;
     return {
@@ -12,7 +18,8 @@
                 done(err);
               }
               else if ( times <  0 ) {
-                done('done was called much than planned');
+                // TODO: describe what test fails.
+                assert.fail('done was called much than planned');
               }
               else if ( times == 0 ) {
                 done();
