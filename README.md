@@ -6,7 +6,7 @@ Absolute scheDuler - event scheduler for multiple devices with synchronized in a
 
 ```
 // In browser
-var abdl = new Absoduler('ws://example.com:9801/');
+var abdl = new Absoduler({server: 'ws://example.com:9801/'});
 abdl.on('blah', function () {
   console.log('baah');
 });
@@ -15,7 +15,7 @@ abdl.on('blah', function () {
 var AbsodulerServer = require('Absoduler').Server;
 var abdls = new AbsodulerServer({ port: 9801 });
 
-abdls.on('connected', function (ws) {
+abdls.on('connection', function (ws) {
   ws.sendEvent('blah', 1000, {'additional': 'informations'});
 });
 ```
